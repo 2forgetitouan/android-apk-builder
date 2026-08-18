@@ -1,0 +1,87 @@
+----part 2 start----
+2026-08-18
+V 17:54:28.895  VectorLegacyBridge   Loading legacy module io.github.backgestureheight from /data/app/~~34xGxp7qpVIPYuz7Kt-rog==/io.github.backgestureheight-yAr5_Z0IDCfrfJK39u0NKQ==/base.apk
+1 ligne de plus
+E 17:54:28.901  VectorLegacyBridge       Failed to load class io.github.backgestureheight
+18 trames
+ClassNotFoundException
+Didn't find class "io.github.backgestureheight" on path: DexPathList[[dex file "InMemoryDexFile[cookie=[0, -5476376669935124496]]"],nativeLibraryDirectories=[/data/app/~~34xGxp7qpVIPYuz7Kt-rog==/io.github.backgestureheight-yAr5_Z0IDCfrfJK39u0NKQ==/base.apk!/lib/arm64-v8a, /system/lib64, /system/system_ext/lib64]]
+BaseDexClassLoader.findClass
+BaseDexClassLoader.java:259
+w2.loadClass
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:70
+ClassLoader.loadClass
+ClassLoader.java:578
+XposedInit.initModule
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:46
+XposedInit.loadModule
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:174
+XposedInit.lambda$loadLegacyModules$0
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:16
+XposedInit.a
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:1
+m3.accept
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:20
+ArrayList.forEach
+ArrayList.java:1613
+XposedInit.loadLegacyModules
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:40
+Main.forkCommon
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:92
+Zygote.nativeSpecializeAppProcess
+Native Method
+Zygote.specializeAppProcess
+Zygote.java:444
+Zygote.childMain
+Zygote.java:881
+Zygote.forkSimpleApps
+Zygote.java:741
+ZygoteConnection.processCommand
+ZygoteConnection.java:285
+ZygoteServer.runSelectLoop
+ZygoteServer.java:521
+ZygoteInit.main
+ZygoteInit.java:916
+V 17:54:37.566  VectorLegacyBridge   Loading legacy module io.github.backgestureheight from /data/app/~~34xGxp7qpVIPYuz7Kt-rog==/io.github.backgestureheight-yAr5_Z0IDCfrfJK39u0NKQ==/base.apk
+1 ligne de plus
+  Loading class io.github.backgestureheight
+E 17:54:37.570  VectorLegacyBridge       Failed to load class io.github.backgestureheight
+18 trames
+ClassNotFoundException
+Didn't find class "io.github.backgestureheight" on path: DexPathList[[dex file "InMemoryDexFile[cookie=[0, -5476376669935156304]]"],nativeLibraryDirectories=[/data/app/~~34xGxp7qpVIPYuz7Kt-rog==/io.github.backgestureheight-yAr5_Z0IDCfrfJK39u0NKQ==/base.apk!/lib/arm64-v8a, /system/lib64, /system/system_ext/lib64]]
+BaseDexClassLoader.findClass
+BaseDexClassLoader.java:259
+w2.loadClass
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:70
+ClassLoader.loadClass
+ClassLoader.java:578
+XposedInit.initModule
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:46
+XposedInit.loadModule
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:174
+XposedInit.lambda$loadLegacyModules$0
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:16
+XposedInit.a
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:1
+m3.accept
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:20
+ArrayList.forEach
+ArrayList.java:1613
+XposedInit.loadLegacyModules
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:40
+Main.forkCommon
+r8-map-id-4e8fef884aca59aee337e225c9e17b9fd6ff1da7e14ff4119d1b2d3bae432287:92
+Zygote.nativeSpecializeAppProcess
+Native Method
+Zygote.specializeAppProcess
+Zygote.java:444
+Zygote.childMain
+Zygote.java:881
+Zygote.forkSimpleApps
+Zygote.java:741
+ZygoteConnection.processCommand
+ZygoteConnection.java:285
+ZygoteServer.runSelectLoop
+ZygoteServer.java:521
+ZygoteInit.main
+ZygoteInit.java:916

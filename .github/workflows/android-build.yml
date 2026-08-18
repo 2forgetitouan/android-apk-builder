@@ -38,6 +38,12 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
+    - name: Extract app project
+      run: |
+        mkdir -p extracted
+        unzip -q "$APP_ZIP" -d extracted
+        echo "PROJECT_DIR=extracted" >> $GITHUB_ENV
+
     - name: Cache Gradle packages
       uses: actions/cache@v4
       with:
@@ -50,12 +56,15 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      working-directory: ${{ env.PROJECT_DIR }}
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
+      working-directory: ${{ env.PROJECT_DIR }}
 
     - name: Build Release APK (unsigned)
       run: ./gradlew assembleRelease
+      working-directory: ${{ env.PROJECT_DIR }}
 
     - name: Download uber-apk-signer
       run: |
@@ -68,30 +77,31 @@ jobs:
     - name: Sign Release APK
       run: |
         java -jar uber-apk-signer.jar \
-          --apks app/build/outputs/apk/release/ \
+          --apks ${{ env.PROJECT_DIR }}/app/build/outputs/apk/release/ \
           --ks keystore.jks \
           --ksAlias "${{ secrets.KEY_ALIAS }}" \
           --ksPass "${{ secrets.KEYSTORE_PASSWORD }}" \
           --ksKeyPass "${{ secrets.KEY_PASSWORD }}" \
-          --out app/build/outputs/apk/release/signed \
-          --overwrite
+          --out ${{ env.PROJECT_DIR }}/app/build/outputs/apk/release/signed
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/app-debug.apk
+        if-no-files-found: error
 
     - name: Upload Release APK (signed)
       uses: actions/upload-artifact@v4
       with:
         name: app-release-signed
-        path: app/build/outputs/apk/release/signed/*.apk
+        path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/release/signed/*.apk
+        if-no-files-found: error
 
     - name: Upload Build Reports
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: build-reports
-        path: app/build/reports/
+        path: ${{ env.PROJECT_DIR }}/app/build/reports/
         if-no-files-found: ignore

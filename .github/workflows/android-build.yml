@@ -82,20 +82,21 @@ jobs:
           --ksAlias "${{ secrets.KEY_ALIAS }}" \
           --ksPass "${{ secrets.KEYSTORE_PASSWORD }}" \
           --ksKeyPass "${{ secrets.KEY_PASSWORD }}" \
-          --out ${{ env.PROJECT_DIR }}/app/build/outputs/apk/release/signed \
-          --overwrite
+          --out ${{ env.PROJECT_DIR }}/app/build/outputs/apk/release/signed
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
         path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/app-debug.apk
+        if-no-files-found: error
 
     - name: Upload Release APK (signed)
       uses: actions/upload-artifact@v4
       with:
         name: app-release-signed
         path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/release/signed/*.apk
+        if-no-files-found: error
 
     - name: Upload Build Reports
       uses: actions/upload-artifact@v4

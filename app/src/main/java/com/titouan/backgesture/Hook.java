@@ -2,7 +2,6 @@ package com.titouan.backgesture;
 
 import android.graphics.Point;
 import android.provider.Settings;
-import android.view.MotionEvent;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -28,16 +27,11 @@ public final class Hook implements IXposedHookLoadPackage {
             XposedHelpers.findAndHookMethod(
                     clazz,
                     "isWithinTouchRegion",
-                    MotionEvent.class,
+                    int.class, int.class,
                     new XC_MethodHook() {
                         @Override
                         protected void beforeHookedMethod(MethodHookParam param) {
                             try {
-                                MotionEvent event = (MotionEvent) param.args[0];
-                                if (event == null) {
-                                    return;
-                                }
-
                                 int percent = Settings.Secure.getInt(
                                         ((android.content.Context) XposedHelpers.getObjectField(
                                                 param.thisObject, "mContext")).getContentResolver(),
@@ -56,7 +50,7 @@ public final class Hook implements IXposedHookLoadPackage {
                                     return;
                                 }
 
-                                int y = (int) event.getY();
+                                int y = (int) param.args[1];
                                 int excludedHeight = displaySize.y * percent / 100;
 
                                 if (y < excludedHeight) {
@@ -68,7 +62,7 @@ public final class Hook implements IXposedHookLoadPackage {
                         }
                     });
 
-            XposedBridge.log(TAG + ": isWithinTouchRegion(MotionEvent) hook installed");
+            XposedBridge.log(TAG + ": isWithinTouchRegion(int,int) hook installed");
         } catch (Throwable t) {
             XposedBridge.log(TAG + ": hook installation failed: " + t);
         }

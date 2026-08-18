@@ -37,3 +37,14 @@ Thumbs.db
 
 # Android Profiling
 *.hprof
+
+# App
+app/app/
+app/gradle/
+app/src/
+app/build.gradle
+app/gradle.properties
+app/gradlew
+app/gradlew.bat
+app/README.md
+app/settings.gradle
